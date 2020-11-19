@@ -53,12 +53,12 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * TODO: initialize properly these sports
      */
     static {
-        SOCCER = null;
-        F1 = null;
-        MOTOGP = null;
-        VOLLEY = null;
-        BASKET = null;
-        BIKE = null;
+        SOCCER = new Sport("Calcio");
+        F1 = new Sport("Formula uno");
+        MOTOGP = new Sport("Moto GP");
+        VOLLEY = new Sport("Pallavolo");
+        BASKET = new Sport("Pallacanestro");
+        BIKE = new Sport("Ciclismo");
     }
 
     /**
@@ -114,7 +114,9 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     // TODO
     public void addSport(final Sport sport) {
-
+    	if(!sports.contains(sport)) {
+    		sports.add(sport);
+    	}
     }
 
     /**
@@ -126,7 +128,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     // TODO
     public boolean hasSport(final Sport s) {
-        return false;
+        return sports.contains(s);
     }
 
     /*
@@ -136,15 +138,36 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * with its bare name.
      */
     public static final class Sport {
-        /*
+    	
+    	private final String name;
+    	public Sport(String name) {
+    		this.name = name;
+    	}
+    	
+        public String getName() {
+			return this.name;
+		}
+
+		/*
          * TODO
          * 
          * Redefine equals so that two sports are equal only if they feature the
          * very same name. Remember that you must also redefine hashCode()!
          */
-        @Override
+        
         public boolean equals(final Object o) {
+        	if(o instanceof Sport) {
+        		return this.name==((Sport)o).getName();
+        	}
             return false;
         }
+        
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
+			return result;
+		}
+        
     }
 }
