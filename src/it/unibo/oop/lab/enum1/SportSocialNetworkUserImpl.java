@@ -34,7 +34,9 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * 
      * add a field to keep track of the set of sports followed/done by a user
      */
-	
+	/**
+	 * Set of sports followed/done by a user
+	 */
 	final Set<Sport> sports = new HashSet<>();
 
     /**

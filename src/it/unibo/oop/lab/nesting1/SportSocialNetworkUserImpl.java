@@ -52,6 +52,9 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
     /*
      * TODO: initialize properly these sports
      */
+    /**
+	 * Static initialization of sports
+	 */
     static {
         SOCCER = new Sport("Calcio");
         F1 = new Sport("Formula uno");
@@ -137,13 +140,29 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * Complete the definition of this static inner class defining a Sport along
      * with its bare name.
      */
+    /**
+     * Static inner class defining a Sport along with its bare name;
+     */
     public static final class Sport {
-    	
+    	/**
+    	 * Field holding the string representation of the full name of this sport
+    	 */
     	private final String name;
+    	
+    	/**
+         * Builds a new {@link Sport}.
+         *
+         * @param name
+         *            String representation of the full name of this sport
+         */
     	public Sport(String name) {
     		this.name = name;
     	}
     	
+    	/**
+    	 * Method that returns the full name of the sport
+    	 * @return String representing full name of the sport
+    	 */
         public String getName() {
 			return this.name;
 		}
@@ -154,14 +173,18 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
          * Redefine equals so that two sports are equal only if they feature the
          * very same name. Remember that you must also redefine hashCode()!
          */
-        
+        /**
+         * {@inheritDoc} 
+         */
         public boolean equals(final Object o) {
         	if(o instanceof Sport) {
         		return this.name==((Sport)o).getName();
         	}
             return false;
         }
-        
+        /**
+         * {@inheritDoc} 
+         */
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;

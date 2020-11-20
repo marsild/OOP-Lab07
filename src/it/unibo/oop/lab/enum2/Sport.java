@@ -5,15 +5,6 @@ package it.unibo.oop.lab.enum2;
 
 /**
  * Represents an enumeration for declaring sports.
- * 
- * 1) You must add a field keeping track of the number of members each team is
- * composed of (1 for individual sports)
- * 
- * 2) A second field will keep track of the name of the sport.
- * 
- * 3) A third field, of type Place, will allow to define if the sport is
- * practiced indoor or outdoor
- * 
  */
 public enum Sport {
 
@@ -48,8 +39,17 @@ public enum Sport {
 	 * 
 	 * Declare required fields
 	 */
+	/**
+	 * Team Members of this sport. 1 if it is individual
+	 */
 	private final int teamMembers;
+	/**
+	 * Actual name of this sport.
+	 */
 	private final String name;
+	/**
+	 * Field representing if it is an OUTDOOR or INDOOR sport.
+	 */
 	private final Place p;
 
 	/*
@@ -61,6 +61,16 @@ public enum Sport {
 	 * 
 	 * - Sport(final Place place, final int noTeamMembers, final String actualName)
 	 */
+	/**
+     * Builds a new {@link Sport}.
+     * 
+     * @param place
+     *            Outdoor or Indoor
+     * @param noTeamMembers
+     *            Team members of this sport
+     * @param actualName
+     *            String representation of the full name of this sport
+     */
 	private Sport(final Place place, final int noTeamMembers, final String actualName) {
 		this.teamMembers = noTeamMembers;
 		this.name = actualName;
@@ -92,18 +102,38 @@ public enum Sport {
 	 * 
 	 * Returns the string representation of a sport
 	 */
+	 /**
+     * Returns true if called on individual sports.
+     * 
+     * @return true if called on individual sports.
+     */
 	public boolean isIndividualSport() {
 		return this.teamMembers == 1;
 	}
-
+	
+	/**
+     * Returns true if called on INDOOR sports.
+     * 
+     * @return true if called on INDOOR sports.
+     */
 	public boolean isIndoorSport() {
 		return this.p == Place.INDOOR;
 	}
-
+	
+	/**
+     * Returns the place where the sport is played.
+     * 
+     * @return true enum INDOOR or OUTDOOR.
+     */
 	public Place getPlace() {
 		return this.p;
 	}
-
+	
+	/**
+     * Returns String representation of this sport.
+     * 
+     * @return String representation containing name, team Members and place.
+     */
 	public String toString() {
 		String s = this.name + ": Is individual? ";
 		if (this.isIndividualSport()) {
